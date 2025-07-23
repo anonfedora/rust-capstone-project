@@ -153,7 +153,8 @@ fn main() -> bitcoincore_rpc::Result<()> {
     let prev_decoded = miner_wallet.decode_raw_transaction(&prev_tx, None)?;
     let prev_output = &prev_decoded.vout[prev_vout];
     let input_addresses = &prev_output.script_pub_key.addresses;
-    let miner_input_address: String = input_addresses.first()
+    let miner_input_address: String = input_addresses
+        .first()
         .map(|a| format!("{}", a.clone().assume_checked()))
         .unwrap_or_default();
     let miner_input_amount: f64 = prev_output.value.to_btc();
