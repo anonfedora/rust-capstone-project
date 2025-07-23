@@ -186,9 +186,9 @@ fn main() -> bitcoincore_rpc::Result<()> {
     }
 
     println!("trader_output_address: {trader_output_address}");
-    println!("trader_output_amount: {:.8}", trader_output_amount);
+    println!("trader_output_amount: {trader_output_amount:.8}");
     println!("miner_change_address: {miner_change_address}");
-    println!("miner_change_amount: {:.8}", miner_change_amount);
+    println!("miner_change_amount: {miner_change_amount:.8}");
 
     // 5. Calculate transaction fee: input - (output1 + output2)
     let tx_fee = miner_input_amount - (trader_output_amount + miner_change_amount);
@@ -198,11 +198,11 @@ fn main() -> bitcoincore_rpc::Result<()> {
     let mut out_file = File::create(out_path)?;
     writeln!(out_file, "{txid}")?;
     writeln!(out_file, "{miner_input_address}")?;
-    writeln!(out_file, "{:.8}", miner_input_amount)?;
+    writeln!(out_file, "{miner_input_amount:.8}")?;
     writeln!(out_file, "{trader_output_address}")?;
-    writeln!(out_file, "{:.8}", trader_output_amount)?;
+    writeln!(out_file, "{trader_output_amount:.8}")?;
     writeln!(out_file, "{miner_change_address}")?;
-    writeln!(out_file, "{:.8}", miner_change_amount)?;
+    writeln!(out_file, "{miner_change_amount:.8}")?;
     writeln!(out_file, "{:.8}", tx_fee.abs())?;
     writeln!(out_file, "{block_height}")?;
     writeln!(out_file, "{block_hash}")?;
